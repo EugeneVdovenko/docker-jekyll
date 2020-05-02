@@ -1,0 +1,16 @@
+version: '2'
+
+services:
+  learn_vdovenko_net:
+    build:
+      context: ./learn.vdovenko.net
+      dockerfile: Dockerfile
+      args:
+        JEKYLL_VERSION: ${JEKYLL_VERSION}
+    command: jekyll serve --watch
+    ports:
+      - 4003:4000
+    volumes:
+      - ./learn.vdovenko.net:/srv/jekyll
+    environment:
+      - JEKYLL_ENV:${JEKYLL_ENV}
